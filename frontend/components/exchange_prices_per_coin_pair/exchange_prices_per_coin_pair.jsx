@@ -55,33 +55,6 @@ class ExchangePricesPerCoinPair extends React.Component {
     });
   }
 
-  renderChart(data) {
-    if (data.length > 0) {
-      return (
-          <div className="container-fluid col-8">
-            <BarChart margin={{ left: 20 }} width={900} height={400} data={data}>
-              <XAxis dataKey="MARKET" />
-              <YAxis domain={[dataMin => (dataMin - dataMin / 500).toFixed(2), 'dataMax']} />
-              <Tooltip content={this.renderTooltip} data={data}/>
-              <Legend />
-              <Bar dataKey="PRICE" fill="#8884d8" />
-            </BarChart>
-          </div>
-      );
-    } else {
-      return (
-        <div>
-          <ClipLoader
-            className='spinner'
-            sizeUnit={"px"}
-            size={70}
-            color={'rgb(155, 166, 178)'}
-          />
-        </div>
-      )
-    }
-  }
-
   renderTooltip(props) {
     let data = props.data.filter(opp => props.label === opp.MARKET)[0] || {};
 
@@ -186,7 +159,7 @@ class ExchangePricesPerCoinPair extends React.Component {
               <YAxis domain={[dataMin => (dataMin - dataMin / 500).toFixed(2), 'dataMax']} />
               <Tooltip content={this.renderTooltip} data={data}/>
               <Legend />
-              <Bar dataKey="PRICE" fill="#8884d8" />
+              <Bar dataKey="PRICE" fill="#3129c6" />
             </BarChart>
           </div>
       );

@@ -12,7 +12,7 @@ const mapStateToProps = state => {
   } else if (state.session.coin) {
     coinPair = {fsym: state.session.coin, tsym: "USD" }
   } else {
-    coinPair = { fsym: "BTC", tsym: "USD"}
+    coinPair = { fsym: "", tsym: ""}
   }
   if (Object.values(state.entities.exchangePricesPerCoinPair).length > 0) {
     exchangePricesPerCoinPair = state.entities.exchangePricesPerCoinPair;

@@ -41,10 +41,10 @@ class DonutChart extends React.Component {
 
     renderChart (data) {
         let label;
-        if (this.state.coinPair) {
+        if (this.state.coinPair && this.state.coinPair.fsym) {
             label = `${this.state.coinPair.fsym}/${this.state.coinPair.tsym}`
         } else {
-            label = ''
+            label = 'BTC/USD'
         }
 
         if (data.length > 0) {
