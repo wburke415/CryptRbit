@@ -23,7 +23,8 @@ const mapStateToProps = state => {
   return ({
     coinPair: coinPair,
     data: exchangePricesPerCoinPair,
-    topCoins: state.entities.topCoins
+    topCoins: state.entities.topCoins,
+    showArbitrage: state.entities.showArbitrage
   })
 };
 

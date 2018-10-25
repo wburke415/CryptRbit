@@ -142,7 +142,10 @@ class ExchangePricesPerCoinPair extends React.Component {
 
   render() {
     let data;
-    if (this.props.coinPair.fsym && this.props.data[this.props.coinPair.fsym]) {
+    if (this.props.showArbitrage) {
+      let opportunities = this.findArbitrageOpportunities();
+      data = this.findTopOpportunities(opportunities, 10);
+    } else if (this.props.coinPair.fsym && this.props.data[this.props.coinPair.fsym]) {
       data = this.twoDecimalify(this.props.data[this.props.coinPair.fsym].slice(0,10));
     } else if (this.state.exchangeDataCollected) {
       let opportunities = this.findArbitrageOpportunities()
