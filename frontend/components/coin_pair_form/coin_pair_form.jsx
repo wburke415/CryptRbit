@@ -18,9 +18,7 @@ class CoinPairForm extends React.Component {
 
   viewArbitrage(e) {
     e.preventDefault();
-    this.setState({fsym: ''});
-    this.setState({tsym: ''});
-    this.props.changeCoinPair(this.state.fsym, this.state.tsym);
+    this.props.showArbitrage(true);
   }
 
   update(field) {

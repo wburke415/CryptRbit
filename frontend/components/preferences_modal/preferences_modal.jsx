@@ -3,8 +3,12 @@ import React from 'react';
 class PreferencesModal extends React.Component {
   constructor(props) {
     super(props);
-
-    this.prefs = {};
+    
+    this.state = {
+      coin: "",
+      newsSource: "",
+      newsCategory: ""
+    }
 
     this.renderModalBody = this.renderModalBody.bind(this);
     this.renderNewsSourceList = this.renderNewsSourceList.bind(this);
@@ -17,14 +21,18 @@ class PreferencesModal extends React.Component {
   setPrefs(key, value) {
     return (e) => {
       e.preventDefault();
-      this.prefs[key] = value;
-      console.log(this.prefs);
+      this.setState({[key]: value});
     }
   }
 
   saveChanges(e) {
     e.preventDefault();
-    this.props.setPreferences(this.prefs);
+    let prefs = {id: this.props.user.id};
+    this.state.coin ? prefs['coin'] = this.state.coin : prefs['coin'] = this.props.user.coin;
+    this.state.newsSource ? prefs['newsSource'] = this.state.newsSource : prefs['newsSource'] = this.props.user.newsSource;
+    this.state.newsCategory ? prefs['newsCategory'] = this.state.newsCategory : prefs['newsCategory'] = this.props.user.newsCategory;
+
+    this.props.setPreferences(prefs);
   }
 
   renderSaveButton() {
