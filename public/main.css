@@ -56,3 +56,12 @@ ul {
   cursor: pointer;
   background-color: rgb(220, 220, 220);
 }
+
+.arbitrage-definition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ddd;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

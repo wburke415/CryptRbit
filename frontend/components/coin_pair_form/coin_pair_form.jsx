@@ -38,24 +38,30 @@ class CoinPairForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="d-inline p-2 w-100 col-11">
-        <div className="row" align="center">
-
-        <button className="col-3" onClick={this.viewArbitrage}>View Arbitrage Opportunities</button>
-
-          <div className="col-7">
-            <label className="col-6">From-Currency:
-              <input placeholder=" BTC" onChange={this.update('fsym')} className="ml-3"></input>
-            </label>
-
-            <label className="col-6">To-Currency:
-              <input placeholder=" USD" onChange={this.update('tsym')} className="ml-3"></input>
-            </label>
-          </div>
-
-          <input type="submit" value="View Currency Pair" className="col-2 button"></input>
+      <div className="container">
+        <div className="row arbitrage-definition col-10 offset-1" >
+          <h1>Arbitrage</h1>
+          <p>Arbitrage is the practice of taking advantage of a price difference between two or more markets: striking a combination of matching deals that capitalize upon the imbalance, the profit being the difference between the market prices.</p>
         </div>
-      </form>
+        <form onSubmit={this.handleSubmit} className="d-inline p-2 w-100 col-11">
+          <div className="row" align="center">
+
+            <button className="col-2 offset-1" onClick={this.viewArbitrage}>View Arbitrage Opportunities</button>
+
+            <div className="col-6">
+              <label className="col-6">From-Currency
+                <input placeholder=" BTC" onChange={this.update('fsym')} className="ml-2"></input>
+              </label>
+
+              <label className="col-6">To-Currency
+                <input placeholder=" USD" onChange={this.update('tsym')} className="ml-2"></input>
+              </label>
+            </div>
+
+            <button onClick={this.handleSubmit} className="col-2 button">View Prices by Currency Pair</button>
+          </div>
+        </form>
+      </div>
     );
   }
 }

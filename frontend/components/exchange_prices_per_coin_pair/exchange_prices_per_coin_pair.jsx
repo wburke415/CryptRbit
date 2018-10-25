@@ -22,7 +22,7 @@ class ExchangePricesPerCoinPair extends React.Component {
 
   componentDidMount() {
     let coins = this.props.coinPair;
-    this.props.fetchPrices(coins.fsym, coins.tsym, 5);
+    this.props.fetchPrices(coins.fsym, coins.tsym, 10);
     this.props.fetchTopCoinPairs(20);
   }
 
@@ -31,7 +31,7 @@ class ExchangePricesPerCoinPair extends React.Component {
     let newCoins = newProps.coinPair;
 
     if (oldCoins.fsym != newCoins.fsym || oldCoins.tsym != newCoins.tsym) {
-      this.props.fetchPrices(newCoins.fsym, newCoins.tsym, 5);
+      this.props.fetchPrices(newCoins.fsym, newCoins.tsym, 10);
     }
 
     const tsym = newCoins.tsym || 'USD';
@@ -142,14 +142,14 @@ class ExchangePricesPerCoinPair extends React.Component {
     return opportunities;
   }
 
-  findTopFiveOpportunities(opportunities) {
+  findTopOpportunities(opportunities, num) {
     let differences = [];
 
     for (let i = 0; i < Object.values(opportunities).length; i++) {
       differences.push(Object.values(opportunities)[i].difference);
     }
 
-    let topDifferences = differences.sort().slice(-5);
+    let topDifferences = differences.sort().slice(num * -1);
     let topOpportunities = [];
 
     for (let i = 0; i < Object.values(opportunities).length; i++) {
@@ -170,10 +170,10 @@ class ExchangePricesPerCoinPair extends React.Component {
   render() {
     let data;
     if (this.props.coinPair.fsym && this.props.data[this.props.coinPair.fsym]) {
-      data = this.twoDecimalify(this.props.data[this.props.coinPair.fsym].slice(0,5));
+      data = this.twoDecimalify(this.props.data[this.props.coinPair.fsym].slice(0,10));
     } else if (this.state.exchangeDataCollected) {
       let opportunities = this.findArbitrageOpportunities()
-      data = this.findTopFiveOpportunities(opportunities);
+      data = this.findTopOpportunities(opportunities, 10);
     } else {
       data = this.twoDecimalify([]);
     }
