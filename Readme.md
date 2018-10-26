@@ -57,3 +57,12 @@ findArbitrageOpportunities() {
     return opportunities;
   }
 ```
+
+In the above code snippet, I iterate over each of the pieces of coin data returned from an API call, skipping them if they have been blacklisted. I then create and object where I set the price values for the coin on each exchange, also skipping blacklisted exchanges. From there I check the values on each exchange in order to find the minimum and maximum trading values for the given coin, storing the min and max of each coin in an object for later reference.
+
+## Technologies
+
+Node.js was used as the backend for this project, along with MongoDB for the database, and Express.js for routing due to the growing popularity of these technologies, and to learn more about them. 
+
+On the frontend, Redux was used to store application state with various segments for news articles, pricing data for coins across numerous exchanges, as well as lists of news sources and categories. This keeps the state normalized, with everything easily accessible and without duplication of data. This aslo allows data to be more easily passed down to the various React components which are quickly updated depending upon user input.
+
