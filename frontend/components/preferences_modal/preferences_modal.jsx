@@ -71,7 +71,7 @@ class PreferencesModal extends React.Component {
         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
         {sources.map((source, idx) => {
           return (
-            <a className="dropdown-item" key={idx} onClick={this.setPrefs('newsSource', source.name)}>{source.name}</a>
+            <a className="dropdown-item" key={idx} onClick={this.setPrefs('newsSource', source.key)}>{source.name}</a>
           );
         })}
         </div>
@@ -134,6 +134,17 @@ class PreferencesModal extends React.Component {
     }
   }
 
+  renderCurrentPrefs() {
+    return (
+      <div className="ml-3 mb-3">
+        <h5 className="modal-title">Current Preferences</h5>
+        <span className="mr-3 currPref">Coins: {this.props.user.coin}</span>
+        <span className="mr-3 currPref">News Source: {this.props.user.newsSource}</span>
+        <span className=" currPref">News Category: {this.props.user.newsCategory}</span>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="mt-2 d-inline col-3">
@@ -153,6 +164,7 @@ class PreferencesModal extends React.Component {
                 </button>
               </div>
               {this.renderModalBody()}
+              {this.renderCurrentPrefs()}
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
 

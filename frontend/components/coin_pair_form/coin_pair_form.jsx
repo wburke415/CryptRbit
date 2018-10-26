@@ -39,7 +39,7 @@ class CoinPairForm extends React.Component {
       <div className="container">
         <div className="row arbitrage-definition col-10 offset-1" >
           <h1>Arbitrage</h1>
-          <p>Arbitrage is the practice of taking advantage of a price difference between two or more markets: striking a combination of matching deals that capitalize upon the imbalance, the profit being the difference between the market prices.</p>
+          <p>Arbitrage is the practice of taking advantage of a price difference between two or more markets: striking a combination of matching deals that capitalize upon the imbalance, the profit being the difference between the market prices. The graph below, when no currency pair is selected, will display the coins with the largest differences in price across exchanges.</p>
         </div>
         <form onSubmit={this.handleSubmit} className="d-inline p-2 w-100 col-11">
           <div className="row" align="center">

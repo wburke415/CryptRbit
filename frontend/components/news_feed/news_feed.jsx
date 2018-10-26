@@ -15,13 +15,23 @@ export default class NewsFeed extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchArticles(this.props.coinPair);
+    if (this.props.userPrefs.newsSource) {
+      this.props.fetchArticles(`feeds=${this.props.userPrefs.newsSource}`);
+    } else if (this.props.userPrefs.newsCategory) {
+      this.props.fetchArticles(`categories=${this.props.userPrefs.newsCategory}`);
+    } else {
+      this.props.fetchArticles(this.props.coinPair);
+    }
     this.props.fetchCategories();
     this.props.fetchSources();
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.props.coinPair !== newProps.coinPair) {
+    if (this.props.userPrefs.newsSource !== newProps.userPrefs.newsSource) {
+      this.props.fetchArticles(`feeds=${newProps.userPrefs.newsSource}`);
+    } else if (this.props.userPrefs.newsCategory !== newProps.userPrefs.newsCategory) {
+      this.props.fetchArticles(`categories=${newProps.userPrefs.newsCategory}`);
+    } else if (this.props.coinPair !== newProps.coinPair) {
       this.props.fetchArticles(newProps.coinPair);
     }
   }

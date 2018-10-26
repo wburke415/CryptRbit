@@ -17,7 +17,8 @@ const mapStateToProps = (state, ownProps) => {
     newsArticles: Object.values(state.entities.newsArticles),
     newsCategories: state.entities.newsCategories,
     newsSources: state.entities.newsSources,
-    coinPair
+    coinPair,
+    userPrefs: state.session
   });
 };
 

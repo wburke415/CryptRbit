@@ -27,7 +27,8 @@ class SignupSigninForm extends React.Component {
   }
 
   signinUser(e) {
-    e.persist();
+    e.preventDefault();
+    // e.persist();
     let email = this.state.email;
     let password = this.state.password;
 
@@ -35,7 +36,8 @@ class SignupSigninForm extends React.Component {
   }
 
   signupUser(e) {
-    e.persist();
+    e.preventDefault();
+    // e.persist();
     let username = this.state.username;
     let email = this.state.email;
     let password = this.state.password;

@@ -19,16 +19,12 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 router.patch("/prefs",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log(req.body);
     const id = req.body.id;
     const prefs = {};
     prefs.coin = req.body.coin;
     prefs.newsSource = req.body.newsSource;
     prefs.newsCategory = req.body.newsCategory;
-    // console.log(prefs)
-    // User.findOne({_id: id}).then(user => console.log(user));
-    const updated =  User.findOneAndUpdate({_id: id}, {$set:{prefs: prefs}}, {new: true, upsert: true}).then(user => res.json(user));
-    // console.log(res.body)
+    User.findOneAndUpdate({_id: id}, {$set:{prefs: prefs}}, {new: true, upsert: true}).then(user => res.json(user));
   }
 );
 
@@ -72,8 +68,6 @@ router.post('/login', (req, res) => {
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
-            console.log(user.prefs);
-            console.log(user.id);
             const payload = {id: user.id, prefs: user.prefs};
 
             jsonwebtoken.sign(
