@@ -18,6 +18,8 @@ CryptRbit performs real-time financial analyses of the global cryptocurrency mar
 
 ## Finding Arbitrage Opportunities
 
+![graph_snippet](/graph_snippet.png)
+
 ```javascript
 findArbitrageOpportunities() {
     const opportunities = {};
